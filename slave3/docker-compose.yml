@@ -1,8 +1,8 @@
 version: '3'
 services:
-  rabbitmq1:
+  rabbitmq3:
     image: rabbitmq:3.8.3-management
-    hostname: rabbitmq4
+    hostname: rabbitmq3
     volumes:
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
@@ -12,6 +12,7 @@ services:
       - RABBITMQ_DEFAULT_VHOST=/
     extra_hosts:
       - "rabbitmq1:节点ip"
+      - "rabbitmq2:节点ip"
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
     ports:
       - "4369:4369"

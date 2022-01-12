@@ -1,0 +1,22 @@
+version: '3'
+services:
+  rabbitmq2:
+    image: rabbitmq:3.8.3-management
+    hostname: rabbitmq2
+    volumes:
+      - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
+      - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_VHOST=/
+    extra_hosts:
+      - "rabbitmq1:节点ip"
+    entrypoint: /usr/local/bin/cluster-entrypoint.sh
+    ports:
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "15671:15671"
+      - "15672:15672"
+      - "25672:25672"
