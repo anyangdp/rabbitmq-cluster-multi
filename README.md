@@ -27,3 +27,4 @@ http://ip:15672
 ip:5672
 - 默认账号密码：guest guest
 
+https://www.jianshu.com/p/afa6b9dcbf13
