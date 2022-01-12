@@ -1,0 +1,9 @@
+version: '3'
+services:
+  haproxy:
+    image: haproxy:1.7
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - 15682:15682
+      - 5682:5682
